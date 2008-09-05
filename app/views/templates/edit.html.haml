@@ -1,0 +1,4 @@
+%h1 Edit Template
+- form_for :template, current_object, :url => template_path(current_object), :html => {:method => :put } do |f|
+  = render :partial => 'form', :locals => {:f => f}
+= render :partial => 'templates_css'

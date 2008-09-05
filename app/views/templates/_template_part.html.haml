@@ -1,0 +1,20 @@
+%tr{:class => "template_part", :id => "template_part_#{template_part.index}"}
+  - fields_for "template[template_parts][#{template_part.index}]", template_part do |t|
+    %td.name
+      %label{:for => "template_template_parts_#{template_part.index}_name"} Name
+      = t.text_field :name, :id => "template_template_parts_#{template_part.index}_name"
+    %td.desc
+      %label{:for => "template_template_parts_#{template_part.index}_description"} Description
+      = t.text_field :description, :id => "template_template_parts_#{template_part.index}_description"
+    %td.filter
+      %label{:for => "template_template_parts_#{template_part.index}_part_type_id"} Type
+      = t.select :part_type_id, part_type_options, {}, :id => "template_template_parts_#{template_part.index}_part_type_id"
+    %td.filter
+      %label{:for => "template_template_parts_#{template_part.index}_filter_id"} Filter
+      = t.select :filter_id, [['<none>', '']] + TextFilter.descendants.map { |s| s.filter_name }.sort, :id => "template template_parts_#{template_part.index}_filter_id"
+    %td.controls
+      = link_to_function image("remove", :alt => "Remove part"), "$('template_part_#{template_part.index}').remove();"
+      = link_to_function image('move_to_top', :alt => "Move to top"), "reorder_template_part(this, 'top');"
+      = link_to_function image('move_higher', :alt => "Move up"), "reorder_template_part(this, 'up');"
+      = link_to_function image('move_lower', :alt => "Move down"), "reorder_template_part(this, 'down');"
+      = link_to_function image('move_to_bottom', :alt => "Move to bottom"), "reorder_template_part(this, 'bottom');"

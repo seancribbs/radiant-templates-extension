@@ -1,0 +1,30 @@
+- include_javascript 'admin/ruledtable'
+%h1 Templates
+%p
+  Templates define and constrain the content structure of pages that use them.
+%p
+  = link_to "New Template", new_template_path
+%table#templates.index
+  %thead
+    %tr
+      %th.template Template
+      %th.modify{:colspan => "2"} Modify
+  %tbody
+    - unless current_objects.empty?
+      - current_objects.each do |template|
+        %tr.node.level-1
+          %td.template
+            = link_to template.name, edit_template_path(template)
+          %td.remove
+            = link_to image('remove', :alt => "Remove template"), template_path(template), :method => :delete, :confirm => "Are you sure you want to delete this template?"
+          %td.order
+            = order_links(template)
+    - else
+      %tr
+        %td.note{:colspan => "3"} No templates
+
+%p
+  = link_to "New Template", new_template_path
+
+= render :partial => 'templates_css'
+

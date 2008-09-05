@@ -1,0 +1,32 @@
+.form-area
+  %p.title
+    %label{:for => "template_name"} Template name
+    = f.text_field :name, :class => "textbox", :style => "width: 100%;"
+  = focus 'template_name'
+  %h2 Parts
+  %table.index
+    %thead
+      %tr
+        %th.name Name
+        %th.description Description
+        %th.filter Type
+        %th.filter Filter
+        %th.controls
+          = link_to_function "Add", "new_template_part()", :style => "background: url(/images/admin/plus.png) left center no-repeat; padding-left: 16px; text-decoration: none; color: black;"
+    %tbody#parts
+      = render :partial => "template_part", :collection => current_object.template_parts
+  %h2 Structure
+  %p
+    = find_and_preserve(f.text_area(:content, :class => "textarea", :style => "width: 100%"))
+  %p
+    %label{:for => "template_layout_id"} Layout
+    = f.collection_select :layout_id, Layout.find(:all), :id, :name, :include_blank => true
+  %p
+    %label{:for => "template_page_class_name"} Page Class (type)
+    = f.collection_select :page_class_name, Page.descendants, :name, :display_name, :include_blank => true, :prompt => "&lt;normal&gt;"
+%p
+  = submit_tag(current_object.new_record? ? "Create template" : "Save template", :class => "button")
+  or
+  = link_to "cancel", objects_path
+- content_for :page_scripts do
+  = templates_scripts
