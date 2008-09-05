@@ -14,9 +14,9 @@ of flexibility in Layout development.  This is accomplished by:
  * Adding a popup menu to the site map in which a template for a new
    page can be chosen
 
-
 The templates extension requires Radiant 0.6.7 or later, preferred 0.6.9 or
-later.
+later. It has worked with earlier versions of Radiant, but is not guaranteed
+to run on them and would require the "shards" extension.
 
 h2. Acknowledgments
 
