@@ -18,6 +18,34 @@ The templates extension requires Radiant 0.6.7 or later, preferred 0.6.9 or
 later. It has worked with earlier versions of Radiant, but is not guaranteed
 to run on them and would require the "shards" extension.
 
+h2. Usage
+
+For example, let's say I have a template for press releases.  Press
+releases consist of a short description (that also serves as the first
+paragraph), a longer description, a location, contact information, and
+standard info about the company.  So I might set up a template like so:
+
+Location: One-line
+Short description: One-line
+Long description: Plain textarea [Textile]
+Contact information: Plain textarea
+
+Then I would set the structure (which becomes the 'body' page-part) to
+be something like:
+
+<pre><code><div class="press-release">
+<p class="contact"><r:content part="Contact information" /></p>
+<p><strong><r:date format="%d %m %Y"/>,  <r:content part="Location"
+/></strong> - <r:content part="Short description" /></p>
+<r:content part="Long description" />
+<r:snippet name="corporate-press-release-blurb" />
+</div></code></pre>
+
+This allows my Layout to serve as a wireframe for the whole site, with
+many different page designs filling the "content well".  I would only
+need a single <r:content /> tag within the layout to accomplish this.
+
+
 h2. Acknowledgments
 
 Thanks to Digital Pulp for funding the initial development of this extension
