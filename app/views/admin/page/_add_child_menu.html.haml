@@ -1,4 +1,4 @@
-%ul.add_child_menu{:style => "display: none;"}
+%ul.add_child_menu{}
   - ::Template.find(:all).each do |template|
     %li= link_to template.name.humanize.titleize, "#", :title => template.id
   %li= link_to "Blank Page", "#"
