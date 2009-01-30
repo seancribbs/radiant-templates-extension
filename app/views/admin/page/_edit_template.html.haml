@@ -7,12 +7,11 @@
     = hidden_field_tag "part[0][draft_content]", @content_template.content, :id => 'part_0_draft_content'
   = hidden_field 'page', 'template_id', :value => @content_template.id
   = hidden_field 'page', 'layout_id', :value => @content_template.layout_id
-  = hidden_field 'page', 'status_id'
   - unless @content_template.page_class_name.blank?
     = hidden_field 'page', 'class_name', :value => @content_template.page_class_name
   - @content_template.template_parts.each_with_index do |part, index|
     = render :partial => "edit_template_part", :object => part, :locals => {:index => index + 1}
-    %br 
+  .row
     %p
       %label{:for=>"page_status_id"}
         Status
@@ -22,8 +21,8 @@
         %label{:for=>"page_published_at"}
           Published At
         = datetime_select "page", "published_at", :disabled => true
-    %span.clear &nbsp;
-    = updated_stamp @page
+  %span.clear &nbsp;
+  = updated_stamp @page
 - else
   = defaults['edit_page_parts']
   = hidden_field 'page', 'template_id', :value => nil
