@@ -12,6 +12,18 @@
     = hidden_field 'page', 'class_name', :value => @content_template.page_class_name
   - @content_template.template_parts.each_with_index do |part, index|
     = render :partial => "edit_template_part", :object => part, :locals => {:index => index + 1}
+    %br 
+    %p
+      %label{:for=>"page_status_id"}
+        Status
+      = select "page", "status_id", Status.find_all.map { |s| [s.name, s.id] }, {}
+    - if @config['page.edit.published_date?']
+      %p#publication-date{:style => "display: none"}
+        %label{:for=>"page_published_at"}
+          Published At
+        = datetime_select "page", "published_at", :disabled => true
+    %span.clear &nbsp;
+    = updated_stamp @page
 - else
   = defaults['edit_page_parts']
   = hidden_field 'page', 'template_id', :value => nil
