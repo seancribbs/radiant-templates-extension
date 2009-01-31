@@ -26,3 +26,7 @@
 - else
   = defaults['edit_page_parts']
   = hidden_field 'page', 'template_id', :value => nil
+- content_for :page_css do
+  :sass
+    #content .textarea, #content .text
+      :width 100%
