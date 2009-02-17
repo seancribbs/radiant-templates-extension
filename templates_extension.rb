@@ -21,7 +21,7 @@ class TemplatesExtension < Radiant::Extension
       include Templates::Associations
       include Templates::Tags
     end
-    Admin::PageController.class_eval do
+    Admin::PagesController.class_eval do
       include Templates::ControllerExtensions
       helper Templates::Helper
     end
