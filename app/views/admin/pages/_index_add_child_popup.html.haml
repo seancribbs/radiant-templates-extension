@@ -1,0 +1,31 @@
+- include_javascript 'lowpro'
+- include_javascript 'admin/templatesmenu'
+- content_for :page_scripts do 
+  == var add_child_menu = #{(render :partial => 'add_child_menu').to_json}; 
+- content_for :page_css do
+  :sass
+    ul.add_child_menu
+      position: absolute
+      margin: -24px 0 0 18px
+      padding: 0 0 0 18px
+      background: url(/images/admin/menu_arrow.png) left 3px no-repeat
+      z-index: 10000
+      li
+        list-style: none
+        display: block
+        background-color: white
+        border: 1px solid black
+        border-top: none
+        margin: 0
+        padding: 0
+        &:first-child
+          border-top: 1px solid black
+        a
+          display: block
+          padding: 6px
+          text-decoration: none
+          color: block
+          &:hover
+            background-color: #dde
+    td.add-child
+      position: relative
