@@ -1,4 +1,4 @@
-class TemplatesScenario < Scenario::Base
+class TemplatesDataset < Dataset::Base
   uses :part_types, :layouts
   
   def load

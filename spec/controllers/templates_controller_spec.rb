@@ -4,7 +4,7 @@ require File.dirname(__FILE__) + '/../spec_helper'
 TemplatesController.class_eval { def rescue_action(e) raise e end }
 
 describe TemplatesController do
-  scenario :users
+  dataset :users
 
   before :each do
     login_as :developer
@@ -60,7 +60,7 @@ describe TemplatesController do
         end
 
         it 'should have access to the edit action' do
-          get :edit
+          get :edit, :id => 1
           response.should be_success
         end
 
@@ -91,7 +91,7 @@ describe TemplatesController do
 
         def redirects_to_pages
           response.should be_redirect
-          response.should redirect_to(page_index_path)
+          response.should redirect_to(admin_pages_path)
           flash[:error].should == 'You must have developer privileges to perform this action.'
         end
 
@@ -108,7 +108,7 @@ describe TemplatesController do
         end
 
         it 'should not have access to the edit action' do
-          get :edit
+          get :edit, :id => 1
         end
 
         it 'should not have access to the update action' do

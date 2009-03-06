@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe TemplatePart do
-  scenario :part_types
+  dataset :part_types
   
   before :each do
     @template_part = TemplatePart.new :template_id => 1, :name => "extended", 

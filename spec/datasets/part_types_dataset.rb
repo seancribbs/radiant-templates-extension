@@ -1,4 +1,4 @@
-class PartTypesScenario < Scenario::Base
+class PartTypesDataset < Dataset::Base
   def load
     create_part_type "One-line", :field_type => "text_field", :field_class => "text", :field_styles => "width: 500px"
     create_part_type "Plaintext", :field_type => "text_area", :field_class => "plain"

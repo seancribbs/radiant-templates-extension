@@ -2,20 +2,20 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 # We only have this spec because setting up an isolated view spec would be too
 # complicated.  Instead we have a quasi-integration test.
-describe Admin::PageController, "edit view controlled by templates" do
+describe Admin::PagesController, "edit view controlled by templates" do
   integrate_views
-  scenario :pages, :templates, :users
+  dataset :users_and_pages, :templates
   before :each do
     @page = pages(:home)
     @page.template = templates(:sample)
     @page.stub!(:children).and_return([])
     Page.stub!(:find).and_return(@page)
     Page.stub!(:find_by_url).and_return(@page)
-    login_as :existing
+    login_as :developer
   end
   
   def do_get
-    get :edit, :id => '1'
+    get :edit, :id => 1
   end
 
   it "should include a hidden field containing the body/structure" do

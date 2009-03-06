@@ -1,9 +1,9 @@
 # Uncomment this if you reference any of your controllers in activate
 require_dependency 'application'
 class TemplatesExtension < Radiant::Extension
-  version "1.0"
+  version "1.1"
   description "Imposes structure on pages via content templates"
-  url "http://seancribbs.com/"
+  url "http://github.com/seancribbs/radiant-templates-extension/tree/master"
 
   define_routes do |map|
     map.resources :templates, :path_prefix => "/admin",

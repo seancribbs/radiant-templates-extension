@@ -1,6 +1,6 @@
 - include_stylesheet 'admin/templates'
 .clear
-.template_part{ :id => "part_" + edit_template_part.name.gsub(/\W/, "_") }
+.template_part{ :id => "part_" + edit_template_part.name.gsub(/\W/, "_"), :style => (edit_template_part.part_type.field_type == 'predefined' ? "display:none" : nil) }
   = hidden_field_tag "part[#{index}][name]", edit_template_part.name, :id => "part_#{index}_name"
   = hidden_field_tag "part[#{index}][filter_id]", edit_template_part.filter_id, :id => "part_#{index}_filter_id"
   /= hidden_field_tag "part[#{index}][filter_id]", edit_template_part.status_id, :id => "part_#{index}_status_id"

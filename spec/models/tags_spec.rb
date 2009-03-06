@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe "Templates::Tags" do
-  scenario :pages
+  dataset :pages
   before :each do
     @page = pages(:home)
     @page.parts.build(:name => "False", :content => 'false')

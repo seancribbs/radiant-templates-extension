@@ -33,6 +33,9 @@ module Templates::Helper
 
       when "hidden"
         field_html << hidden_field_tag(field_name, part_content, options)
+
+      when "predefined"
+        field_html << hidden_field_tag(field_name, template_part.description, options)
     end
 
     field_html.join("\n")

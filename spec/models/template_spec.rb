@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe ::Template do
-  scenario :templates, :pages
+  dataset :templates, :pages
 
   before :each do
     @template = Template.new :name => "Article", :layout_id => layout_id(:main)
