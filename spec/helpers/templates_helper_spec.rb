@@ -35,7 +35,7 @@ describe Templates::Helper do
     end
 
     it "should put content from the existing part in the field" do
-      helper.should_receive(:text_area_tag).with('part[1][content]', 'Just a test.', :class => 'plain', :id => 'part_1_content')
+      helper.should_receive(:text_area_tag).with('parts[1][content]', 'Just a test.', :class => 'plain', :id => 'part_1_content')
       helper.template_part_field(template_parts(:extended), 1)
     end
 

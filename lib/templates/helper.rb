@@ -4,18 +4,18 @@ module Templates::Helper
     field_html = []
     if drafts_enabled
       live_part_content = @page.part(template_part.name).content rescue ''
-      live_field_name = "part[#{index}][content]"
-      live_field_id = "part_#{index}_content"      
+      live_field_name = "page[parts][][content]"
+      live_field_id = "page_parts_#{index}_content"
       part_content = @page.part(template_part.name).draft_content rescue ''
-      field_name = "part[#{index}][draft_content]"
-      field_id = "part_#{index}_draft_content"
+      field_name = "page[parts][][draft_content]"
+      field_id = "page_parts_#{index}_draft_content"
       field_html << hidden_field_tag(live_field_name, h(live_part_content), :id => live_field_id)
     else
       part_content = @page.part(template_part.name).content rescue ''
-      field_name = "part[#{index}][content]"
-      field_id = "part_#{index}_content"
+      field_name = "page[parts][][content]"
+      field_id = "page_parts_#{index}_content"
     end
-    
+
     options = {:class => template_part.part_type.field_class, 
                :style => template_part.part_type.field_styles,
                :id => field_id}.reject{ |k,v| v.blank? }
@@ -33,9 +33,6 @@ module Templates::Helper
 
       when "hidden"
         field_html << hidden_field_tag(field_name, part_content, options)
-
-      when "predefined"
-        field_html << hidden_field_tag(field_name, template_part.description, options)
     end
 
     field_html.join("\n")

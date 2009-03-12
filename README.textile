@@ -1,6 +1,10 @@
 h1. Templates
 
-Created by Sean Cribbs, September 2007 -- Refactored, August 2008
+h2. Revision History
+
+* Radiant 0.7 Compatible, March 2009
+* Refactored, August 2008
+* Created by Sean Cribbs, September 2007
 
 Templates provide internal structure to Radiant pages to create an extra layer
 of flexibility in Layout development.  This is accomplished by:
