@@ -3,7 +3,7 @@ class CreateDefaultPartTypes < ActiveRecord::Migration
     [
       {:name => "One-line", :field_type => "text_field", :field_class => "text"},
       {:name => "Plain textarea", :field_type => "text_area", :field_class => "textarea"},
-      {:name => "Boolean", :field_type => "check_box"}
+      {:name => "Boolean", :field_type => "check_box"},
       {:name => "Predefined", :field_type => "predefined"}
     ].each {|a| PartType.create(a) }
   end
