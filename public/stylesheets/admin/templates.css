@@ -8,10 +8,12 @@
 .template_part textarea.textarea, .template_part input.text {
   display: block;
 }
+/*
 .template_part textarea.textarea {
   width: 504px;
   height: 120px !important;
 }
+*/
 .template_part input.text {
   padding: 2px 0;
   font-size: 16px;
