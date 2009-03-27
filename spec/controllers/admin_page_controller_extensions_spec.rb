@@ -36,10 +36,10 @@ describe Admin::PagesController, "edit view controlled by templates" do
     response.should have_tag('textarea', :attributes => {'name' => 'part[1][content]', 'class' => 'plaintext'})
   end
   
-  it "should display a checkbox template part" do
+  it "should display a radio_button template part" do
     do_get
     response.should have_tag('input', :attributes => {'type' => 'hidden', 'name' => 'part[2][name]', 'value' => 'featured?'})
-    response.should have_tag('input', :attributes => {'type' => 'checkbox', 'name' => 'part[2][content]', 'value' => 'true'})
+    response.should have_tag('input', :attributes => {'type' => 'radio_button', 'name' => 'part[2][content]', 'value' => 'true'})
     response.should have_tag('input', :attributes => {'type' => 'hidden', 'name' => 'part[2][content]', 'value' => 'false'}) 
   end
   

@@ -27,12 +27,15 @@ module Templates::Helper
       when "text_field"
         field_html << text_field_tag(field_name, h(part_content), options)
 
-      when "check_box"
-        field_html << check_box_tag(field_name, "true", part_content =~ /true/, options)
-        field_html << hidden_field_tag(field_name, "false", :id => "part_#{index}_content_hidden")
+      when "radio_button"
+        field_html << " &mdash; " + radio_button_tag(field_name, "true", part_content =~ /true/, options) + label_tag("True")
+        field_html << radio_button_tag(field_name, "false", part_content !~ /true/, options) + label_tag("False")
 
       when "hidden"
         field_html << hidden_field_tag(field_name, part_content, options)
+
+      when "predefined"
+        field_html << hidden_field_tag(field_name, template_part.description, options)
     end
 
     field_html.join("\n")

@@ -18,7 +18,8 @@ module Templates::Tags
     part_name = tag.attr['part']
     raise StandardTags::TagError.new("`boolean_part:if' tag requires a 'part' attribute") unless part_name
     part = tag.locals.page.part(part_name)
-    result = part.nil? ? "" : part.content.strip
+    # result = part.nil? ? "" : part.content.strip
+    result = part.nil? ? "" : (dev?(tag.globals.page.request) && defined?(ConcurrentDraftExtension) ? part.draft_content.strip : part.content.strip)
     tag.expand if result =~ /t|true|1/i
   end
   
@@ -35,7 +36,8 @@ module Templates::Tags
     part_name = tag.attr['part']
     raise StandardTags::TagError.new("`boolean_part:unless' tag requires a 'part' attribute") unless part_name
     part = tag.locals.page.part(part_name)
-    result = part.nil? ? "" : part.content.strip
+    # result = part.nil? ? "" : part.content.strip
+    result = part.nil? ? "" : (dev?(tag.globals.page.request) && defined?(ConcurrentDraftExtension) ? part.draft_content.strip : part.content.strip)
     tag.expand unless result =~ /t|true|1/i
   end
 end

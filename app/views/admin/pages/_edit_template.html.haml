@@ -2,7 +2,7 @@
   - @index = 0
   = hidden_field_tag "page[parts][][name]", "body", :id => "page_parts_0_name"
   = hidden_field_tag "page[parts][][filter_id]", nil, :id => "page_parts_0_filter_id"
-  = hidden_field_tag "page[parts][][content]", @content_template.content, :id => "part_0_content"
+  = hidden_field_tag "page[parts][][content]", @content_template.content, :id => "page_parts_0_content"
   - if defined?(ConcurrentDraftExtension)
     = hidden_field_tag "page[parts][][draft_content]", @content_template.content, :id => 'page_parts_0_draft_content'
   = hidden_field 'page', 'template_id', :value => @content_template.id
