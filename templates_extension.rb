@@ -12,7 +12,10 @@ class TemplatesExtension < Radiant::Extension
   end
 
   def activate
-    FileSystem::MODELS << "PartType" << "Template"
+    begin
+      FileSystem::MODELS << "PartType" << "Template"
+      rescue NameError, LoadError
+    end
     Page.class_eval do
       include Templates::Associations
       include Templates::Tags
