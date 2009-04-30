@@ -5,6 +5,7 @@ describe Templates::Helper do
 
   before :each do
     @page = pages(:home)
+    helper.instance_variable_set(:@page, @page)
   end
 
   describe "template_part_field" do
@@ -40,7 +41,6 @@ describe Templates::Helper do
     end
 
     it "should put content from the existing part in the field" do
-      @page.part(:extended).content.should == "Just a test."
       helper.should_receive(:text_area_tag).with('page[parts][][content]', 'Just a test.', :class => 'plain', :id => 'page_parts_1_content')
       helper.template_part_field(template_parts(:extended), 1)
     end
