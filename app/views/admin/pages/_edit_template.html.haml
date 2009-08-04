@@ -11,9 +11,6 @@
     = hidden_field 'page', 'class_name', :value => @content_template.page_class_name
   - @content_template.template_parts.each_with_index do |part, index|
     = render :partial => "edit_template_part", :object => part, :locals => {:index => index + 1}
-  - @page.parts.each do |part|
-    - unless part.new_record? || @content_template.template_parts.any? {|tp| tp.name == part.name }
-      = hidden_field_tag "page[parts_attributes][#{part.id}][_delete]", true
   .row
     %p
       %label{:for=>"page_status_id"}
