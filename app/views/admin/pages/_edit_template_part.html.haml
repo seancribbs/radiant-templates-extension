@@ -4,6 +4,7 @@
   = hidden_field_tag "page[parts_attributes][#{index}][name]", edit_template_part.name, :id => "page_parts_#{index}_name"
   = hidden_field_tag "page[parts_attributes][#{index}][filter_id]", edit_template_part.filter_id, :id => "page_parts_#{index}_filter_id"
   = hidden_field_tag "page[parts_attributes][#{index}][_delete]", false
+  = hidden_field_tag "page[parts_attributes][#{index}][id]", @page.part(edit_template_part.name).try(:[], :id)
   %label{:for => "page_parts_#{index}_content"}= edit_template_part.name.humanize
   %span.description= escape_once(edit_template_part.description)
   = find_and_preserve(template_part_field(edit_template_part, index, defined?(ConcurrentDraftExtension)))

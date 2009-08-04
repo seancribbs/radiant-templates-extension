@@ -3,15 +3,15 @@ module Templates::Helper
   def template_part_field(template_part, index, drafts_enabled = false)
     field_html = []
     if drafts_enabled
-      live_part_content = @page.part(template_part.name).content rescue ''
+      live_part_content = @page.part(template_part.name).try(:content) || ''
       live_field_name = "page[parts_attributes][#{index}][content]"
       live_field_id = "page_parts_#{index}_content"
-      part_content = @page.part(template_part.name).draft_content rescue ''
+      part_content = @page.part(template_part.name).try(:draft_content) || ''
       field_name = "page[parts_attributes][#{index}][draft_content]"
       field_id = "page_parts_#{index}_draft_content"
       field_html << hidden_field_tag(live_field_name, h(live_part_content), :id => live_field_id)
     else
-      part_content = @page.part(template_part.name).content rescue ''
+      part_content = @page.part(template_part.name).try(:content) || ''
       field_name = "page[parts_attributes][#{index}][content]"
       field_id = "page_parts_#{index}_content"
     end
