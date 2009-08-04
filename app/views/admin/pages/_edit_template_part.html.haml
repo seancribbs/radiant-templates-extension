@@ -1,9 +1,9 @@
 - include_stylesheet 'admin/templates'
 .clear
 .template_part{ :id => "part_" + edit_template_part.name.gsub(/\W/, "_"), :style => (edit_template_part.part_type.field_type == 'predefined' ? "display:none" : nil) }
-  = hidden_field_tag "page[parts][][name]", edit_template_part.name, :id => "page_parts_#{index}_name"
-  = hidden_field_tag "page[parts][][filter_id]", edit_template_part.filter_id, :id => "page_parts_#{index}_filter_id"
-  /= hidden_field_tag "part[#{index}][filter_id]", edit_template_part.status_id, :id => "part_#{index}_status_id"
+  = hidden_field_tag "page[parts_attributes][#{index}][name]", edit_template_part.name, :id => "page_parts_#{index}_name"
+  = hidden_field_tag "page[parts_attributes][#{index}][filter_id]", edit_template_part.filter_id, :id => "page_parts_#{index}_filter_id"
+  = hidden_field_tag "page[parts_attributes][#{index}][_delete]", false
   %label{:for => "page_parts_#{index}_content"}= edit_template_part.name.humanize
   %span.description= escape_once(edit_template_part.description)
   = find_and_preserve(template_part_field(edit_template_part, index, defined?(ConcurrentDraftExtension)))

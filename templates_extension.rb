@@ -1,7 +1,7 @@
 # Uncomment this if you reference any of your controllers in activate
-require_dependency 'application'
+require_dependency 'application_controller'
 class TemplatesExtension < Radiant::Extension
-  version "1.1"
+  version "1.2"
   description "Imposes structure on pages via content templates"
   url "http://github.com/seancribbs/radiant-templates-extension/tree/master"
 
@@ -14,7 +14,7 @@ class TemplatesExtension < Radiant::Extension
   def activate
     begin
       FileSystem::MODELS << "PartType" << "Template"
-      rescue NameError, LoadError
+    rescue NameError, LoadError
     end
     Page.class_eval do
       include Templates::Associations

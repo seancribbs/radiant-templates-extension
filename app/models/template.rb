@@ -1,6 +1,6 @@
 class Template < ActiveRecord::Base
   acts_as_list
-  order_by "position ASC"
+  default_scope :order => "position ASC"
   
   class << self
     def reordering

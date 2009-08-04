@@ -1,10 +1,10 @@
 - if !(@content_template ||= @page.template).blank?
   - @index = 0
-  = hidden_field_tag "page[parts][][name]", "body", :id => "page_parts_0_name"
-  = hidden_field_tag "page[parts][][filter_id]", nil, :id => "page_parts_0_filter_id"
-  = hidden_field_tag "page[parts][][content]", @content_template.content, :id => "page_parts_0_content"
+  = hidden_field_tag "page[parts][0][name]", "body", :id => "page_parts_0_name"
+  = hidden_field_tag "page[parts][0][filter_id]", nil, :id => "page_parts_0_filter_id"
+  = hidden_field_tag "page[parts][0][content]", @content_template.content, :id => "page_parts_0_content"
   - if defined?(ConcurrentDraftExtension)
-    = hidden_field_tag "page[parts][][draft_content]", @content_template.content, :id => 'page_parts_0_draft_content'
+    = hidden_field_tag "page[parts][0][draft_content]", @content_template.content, :id => 'page_parts_0_draft_content'
   = hidden_field 'page', 'template_id', :value => @content_template.id
   = hidden_field 'page', 'layout_id', :value => @content_template.layout_id
   - unless @content_template.page_class_name.blank?
