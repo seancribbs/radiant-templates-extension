@@ -1,6 +1,0 @@
-[submodule "vendor/plugins/make_resourceful"]
-	path = vendor/plugins/make_resourceful
-	url = git://github.com/hcatlin/make_resourceful.git
-[submodule "vendor/plugins/acts_as_list"]
-	path = vendor/plugins/acts_as_list
-	url = git://github.com/rails/acts_as_list.git
