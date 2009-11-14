@@ -1,9 +1,9 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 # Re-raise errors caught by the controller.
-TemplatesController.class_eval { def rescue_action(e) raise e end }
+Admin::TemplatesController.class_eval { def rescue_action(e) raise e end }
 
-describe TemplatesController do
+describe Admin::TemplatesController do
   dataset :users
 
   before :each do
@@ -41,7 +41,7 @@ describe TemplatesController do
 
         def redirects_to_index
           response.should be_redirect
-          response.should redirect_to(templates_path)
+          response.should redirect_to(admin_templates_path)
         end
 
         it 'should have access to the index action' do

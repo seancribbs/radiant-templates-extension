@@ -1,3 +1,8 @@
+%p.buttons
+  = submit_tag(current_object.new_record? ? "Create template" : "Save template", :class => "button")
+  or
+  = link_to "cancel", objects_path
+
 .form-area
   %p.title
     %label{:for => "template_name"} Template name
@@ -24,9 +29,13 @@
   %p
     %label{:for => "template_page_class_name"} Page Class (type)
     = f.collection_select :page_class_name, Page.descendants, :name, :display_name, :include_blank => true, :prompt => "&lt;normal&gt;"
-%p
+
+%p.buttons
   = submit_tag(current_object.new_record? ? "Create template" : "Save template", :class => "button")
   or
   = link_to "cancel", objects_path
+  
 - content_for :page_scripts do
   = templates_scripts
+
+= render :partial => 'templates_css'

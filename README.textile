@@ -2,8 +2,9 @@ h1. Templates
 
 h2. Revision History
 
+* Refactored to standard structure under /admin, admin UI for Part Types added, backward compatibility to < 0.8, by Andrew vonderLuft, November 2008, 
+* Refactored by Sean Cribbs, August 2008
 * Radiant 0.7 Compatible, March 2009
-* Refactored, August 2008
 * Created by Sean Cribbs, September 2007
 
 Templates provide internal structure to Radiant pages to create an extra layer

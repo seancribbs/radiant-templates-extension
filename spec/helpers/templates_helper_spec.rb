@@ -30,25 +30,25 @@ describe Templates::Helper do
     end
 
     it "should determine the field name from the given index" do
-      helper.should_receive(:hidden_field_tag).with('page[parts_attributes][1][content]', '', :class => 'asset', :id => 'page_parts_1_content')
+      helper.should_receive(:hidden_field_tag).with("#{helper.page_part_name(1)}[content]", '', :class => 'asset', :id => 'page_parts_1_content')
       helper.template_part_field(template_parts(:feature_image), 1)
     end
 
     it "should put blank content in the field if the part doesn't already exist" do
       @page.part('Tagline').should be_nil
-      helper.should_receive(:text_field_tag).with('page[parts_attributes][1][content]', '', :class => 'text', :style => "width: 500px", :id => 'page_parts_1_content')
+      helper.should_receive(:text_field_tag).with("#{helper.page_part_name(1)}[content]", '', :class => 'text', :style => "width: 500px", :id => 'page_parts_1_content')
       helper.template_part_field(template_parts(:tagline), 1)
     end
 
     it "should put content from the existing part in the field" do
-      helper.should_receive(:text_area_tag).with('page[parts_attributes][1][content]', 'Just a test.', :class => 'plain', :id => 'page_parts_1_content')
+      helper.should_receive(:text_area_tag).with("#{helper.page_part_name(1)}[content]", 'Just a test.', :class => 'plain', :id => 'page_parts_1_content')
       helper.template_part_field(template_parts(:extended), 1)
     end
 
     if defined?(ConcurrentDraftExtension)
       it "should output the draft content and hidden live content if concurrent_draft is enabled" do
-        helper.should_receive(:hidden_field_tag).with('page[parts_attributes][1][content]', 'Just a test.', :id => 'page_parts_1_content')
-        helper.should_receive(:text_area_tag).with('page[parts_attributes][1][draft_content]', '', :class => 'plain', :id => 'page_parts_1_draft_content')
+        helper.should_receive(:hidden_field_tag).with("#{helper.page_part_name(1)}[content]", 'Just a test.', :id => 'page_parts_1_content')
+        helper.should_receive(:text_area_tag).with("#{helper.page_part_name(1)}[draft_content]", '', :class => 'plain', :id => 'page_parts_1_draft_content')
         helper.template_part_field(template_parts(:extended), 1, true)
       end
     end

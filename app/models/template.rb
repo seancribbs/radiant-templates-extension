@@ -1,6 +1,10 @@
 class Template < ActiveRecord::Base
   acts_as_list
-  default_scope :order => "position ASC"
+  begin
+    default_scope :order => "position ASC"
+  rescue
+    named_scope :default, :order => "position"
+  end
   
   class << self
     def reordering

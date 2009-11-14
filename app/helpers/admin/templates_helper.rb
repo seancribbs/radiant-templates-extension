@@ -1,4 +1,4 @@
-module TemplatesHelper
+module Admin::TemplatesHelper
   
   def templates_scripts
     <<-JS

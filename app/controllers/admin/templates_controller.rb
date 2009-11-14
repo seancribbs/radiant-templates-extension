@@ -1,5 +1,5 @@
-class TemplatesController < ApplicationController
-
+class Admin::TemplatesController < ApplicationController
+    
   only_allow_access_to :index, :new, :edit, :create, :update, :destroy, :move_higher, :move_lower, :move_to_top, :move_to_bottom,
     :when => [:developer, :admin],
     :denied_url => '/admin/pages',
@@ -7,7 +7,7 @@ class TemplatesController < ApplicationController
 
   make_resourceful do
     actions :index, :new, :create, :edit, :update, :destroy
-
+  
     response_for(:create, :update, :destroy, :destroy_fails) do |format|
       format.html { redirect_to objects_path }
     end

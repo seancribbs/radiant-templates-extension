@@ -1,0 +1,23 @@
+%table#part_types.index
+  %thead
+    %tr
+      %th.name Name
+      %th.type Field Type
+      %th.class Field Class
+      %th.styles Field Styles
+      %th.modify{:colspan => "2"} Modify
+  %tbody
+    - parttypes = PartType.find(:all)
+    - unless parttypes.empty?
+      - parttypes.each do |part_type|
+        %tr.template_part
+          %td.template
+            = link_to part_type.name, edit_admin_part_type_path(part_type)
+          %td.type= part_type.field_type
+          %td.class= part_type.field_class
+          %td.styles= part_type.field_styles
+          %td.remove
+            = link_to image('remove', :alt => "Remove Part Type"), admin_part_type_path(part_type), :method => :delete, :confirm => "Are you sure you want to delete this part type?"
+    - else
+      %tr
+        %td.note{:colspan => "3"} No Part Types Defined

@@ -1,0 +1,6 @@
+%h2 
+  Edit Template Part Type ( 
+  %span{:style => 'color:red'} Admin only!
+  )
+- form_for :part_tpe, current_object, :url => admin_part_type_path(current_object), :html => {:method => :put } do |f|
+  = render :partial => 'form', :locals => {:f => f}

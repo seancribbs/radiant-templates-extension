@@ -1,0 +1,27 @@
+%p= link_to "New Part Type", new_admin_part_type_path
+.form-area    
+  %table.index
+    %thead
+      %tr
+        %th.name Name
+        %th.type Field Type
+        %th.class Field Class
+        %th.styles Field Styles
+        %th.modify Modify
+        
+      %tr.template_part
+        %td.name= text_field :part_type, :name, :class => :textbox, :maxlength => 20
+        %td.type
+          - types = PartType.validate_callback_chain.select {|callback| callback.identifier == :field_types }[0].options[:in]
+          = select(:part_type, :field_type, types)
+        %td.class= text_field :part_type, :field_class, :class => :textbox, :maxlength => 20
+        %td.styles= text_field :part_type, :field_styles, :class => :textbox, :maxlength => 20
+        %td.modify
+          = submit_tag(current_object.new_record? ? "Create New Part Type" : "Save Part Type", :class => "button")
+          or
+          = link_to "cancel", admin_templates_path + "#part_types"
+      
+  %h4 Existing Part Types
+  = render :partial => 'list'
+
+= render :partial => 'admin/templates/templates_css'
