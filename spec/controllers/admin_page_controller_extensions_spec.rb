@@ -9,13 +9,11 @@ describe Admin::PagesController, "edit view controlled by templates" do
     @page = pages(:home)
     @page.template = templates(:sample)
     @page.stub!(:children).and_return([])
-    Page.stub!(:find).and_return(@page)
-    Page.stub!(:find_by_url).and_return(@page)
     login_as :developer
   end
   
   def do_get
-    get :edit, :id => 1
+    get :edit, :id => @page.id
   end
 
   it "should include a hidden field containing the body/structure" do

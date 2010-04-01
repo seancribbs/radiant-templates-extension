@@ -24,6 +24,7 @@
         = datetime_select "page", "published_at", :disabled => true
   %span.clear &nbsp;
   = updated_stamp @page
+  = render_region :parts_bottom
 - else
   = defaults['edit_page_parts']
   = hidden_field 'page', 'template_id', :value => nil

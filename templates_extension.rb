@@ -36,6 +36,8 @@ class TemplatesExtension < Radiant::Extension
     # Admin UI customization
     admin.page.edit.add :extended_metadata, 'switch_templates'
     admin.page.edit.add :form, 'edit_template', :before => 'edit_page_parts'
+    admin.page.edit.parts_bottom.delete 'edit_layout_and_type'
+    admin.page.edit.parts_bottom.delete 'edit_timestamp'
     admin.page.edit.form.delete 'edit_page_parts'
     admin.page.index.add :bottom, 'index_add_child_popup'
     admin.page.index.add :node, 'type_column', :before => 'status_column'
