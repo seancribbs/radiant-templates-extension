@@ -23,10 +23,11 @@
           Published At
         = datetime_select "page", "published_at", :disabled => true
   %span.clear &nbsp;
-  = updated_stamp @page
   = render_region :parts_bottom
+  = updated_stamp @page
 - else
   = defaults['edit_page_parts']
+  = updated_stamp @page
   = hidden_field 'page', 'template_id', :value => nil
 - content_for :page_css do
   :sass
