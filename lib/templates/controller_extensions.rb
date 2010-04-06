@@ -9,10 +9,10 @@ module Templates::ControllerExtensions
     unless params[:template].blank?
       case params[:template].to_i
         when 0
-          @content_template = ''
+          @page.template = @content_template = nil
           params[:page][:template_id] = nil if params[:page]
         else
-          @content_template = Template.find(params[:template])
+          @page.template = @content_template = Template.find(params[:template])
           params[:page][:template_id] = @content_template.id if params[:page]
       end
     end

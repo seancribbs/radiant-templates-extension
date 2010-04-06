@@ -25,7 +25,7 @@
     %p
       %label{:for=>"page_class_name"}
         Page Type
-      = select "page", "class_name", Page.descendants.map { |p| [p.display_name, p.name] }.sort_by { |p| p.first }
+      = select "page", "class_name", [['<normal>', '']] + Page.descendants.map { |p| [p.display_name, p.name] }.sort_by { |p| p.first }
       
 %p
   %label{:for=>"page_status_id"}
