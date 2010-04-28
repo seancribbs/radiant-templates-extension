@@ -13,6 +13,10 @@ module Templates::PageExtensions
     end
   end
   
+  def template_name
+    template ? template.name : "Blank Page"
+  end
+  
   # Meta-programming methods to determine if page is built on a specific template
   # e.g. @page.is_a_press_release? assuming you have "Press Release" template defined.
   Template.find(:all).each do |unique_template|
