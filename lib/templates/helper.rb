@@ -35,7 +35,9 @@ module Templates::Helper
         field_html << text_field_tag(field_name, h(part_content), options)
 
       when "radio_button"
+        options[:id] = "#{field_id}_true"
         field_html << " &mdash; " + radio_button_tag(field_name, "true", part_content =~ /true/, options) + label_tag("True")
+        options[:id] = "#{field_id}_false"
         field_html << radio_button_tag(field_name, "false", part_content !~ /true/, options) + label_tag("False")
 
       when "hidden"
