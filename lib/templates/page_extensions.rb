@@ -19,12 +19,16 @@ module Templates::PageExtensions
   
   # Meta-programming methods to determine if page is built on a specific template
   # e.g. @page.is_a_press_release? assuming you have "Press Release" template defined.
-  Template.find(:all).each do |unique_template|
-    class_eval <<-CODE, __FILE__, __LINE__
-      def is_a_#{unique_template.name.titleize.scan(/\w+/).join.underscore}?
-        template_id? && template.name == "#{unique_template.name}"
-      end
-    CODE
+  begin
+    Template.find(:all).each do |unique_template|
+      class_eval <<-CODE, __FILE__, __LINE__
+        def is_a_#{unique_template.name.titleize.scan(/\w+/).join.underscore}?
+          template_id? && template.name == "#{unique_template.name}"
+        end
+      CODE
+    end
+  rescue
+    # This won't run before initial migrations, which create the Template table
   end
   
 end
