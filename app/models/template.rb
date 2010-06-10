@@ -1,9 +1,9 @@
 class Template < ActiveRecord::Base
   acts_as_list
   begin
-    default_scope :order => "position ASC"
+    order_by "position ASC"  ## backward compatible with 0.7
   rescue
-    named_scope :default, :order => "position"
+    default_scope :order => "position ASC"
   end
   
   class << self
