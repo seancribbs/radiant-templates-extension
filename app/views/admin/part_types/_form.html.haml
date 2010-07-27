@@ -15,7 +15,7 @@
           - types = PartType.validate_callback_chain.select {|callback| callback.identifier == :field_types }[0].options[:in]
           = select(:part_type, :field_type, types)
         %td.class= text_field :part_type, :field_class, :class => :textbox, :maxlength => 20
-        %td.styles= text_field :part_type, :field_styles, :class => :textbox, :maxlength => 20
+        %td.styles= text_field :part_type, :field_styles, :class => :textbox
         %td.modify
           = submit_tag(current_object.new_record? ? "Create New Part Type" : "Save Part Type", :class => "button")
           or
