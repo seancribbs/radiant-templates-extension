@@ -3,7 +3,7 @@ h1. Templates
 h2. Revision History
 
 * Radiant 0.8 compatible and tested, May 2010
-* Refactored to standard structure under /admin, admin UI for Part Types added, backward compatibility to < 0.8, by Andrew vonderLuft, November 2008, 
+* Refactored to standard structure under /admin, admin UI for Part Types added, backward compatibility to < 0.8, by Andrew vonderLuft, November 2009, 
 * Refactored by Sean Cribbs, August 2008
 * Radiant 0.7 Compatible, March 2009
 * Created by Sean Cribbs, September 2007
