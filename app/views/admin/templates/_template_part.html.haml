@@ -6,7 +6,7 @@
     %td.desc
       %label{:for => "template_template_parts_#{template_part.index}_description"} Description
       = t.text_field :description, :id => "template_template_parts_#{template_part.index}_description"
-    %td.filter
+    %td.part_type
       %label{:for => "template_template_parts_#{template_part.index}_part_type_id"} Type
       = t.select :part_type_id, part_type_options, {}, :id => "template_template_parts_#{template_part.index}_part_type_id"
     %td.filter
