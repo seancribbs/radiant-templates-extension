@@ -14,13 +14,21 @@ module Admin::TemplatesHelper
         new Insertion.Bottom('parts', template_part_partial.evaluate({index: template_parts_index}));
       }
       
+      function zeroPad(num,count){
+        var numZeropad = num + '';
+        while(numZeropad.length < count) {
+          numZeropad = "0" + numZeropad;
+        }
+        return numZeropad;
+      }
+      
       function fix_template_part_indexes(){
         var parts = $('parts');
         var new_index = 0;
         parts.select(".template_part").each(function(row){
           new_index += 1;
           row.select("input, select, textarea").each(function(input){
-            input.name = input.name.sub(/\\d+/, new_index);
+            input.name = input.name.sub(/\\d+/, zeroPad(new_index,2));
           });
         });
       }
